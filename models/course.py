@@ -9,11 +9,11 @@ class Course:
         self.name = name
 
 
-def get_courses() -> List[Course]:
+def get_courses() -> List:
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute('SELECT id,name FROM course;')
+    cursor.execute('SELECT id,name FROM courses;')
 
     results = cursor.fetchall()
 
@@ -22,10 +22,11 @@ def get_courses() -> List[Course]:
 
     courses = []
     for result in results:
-        course = Course(
-            course_id=result[0],
-            name=result[1]
-        )
+        course = {
+            'id': result[0],
+            'name': result[1]
+        }
+
         courses.append(course)
 
     return courses

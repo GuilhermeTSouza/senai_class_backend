@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
 from models.course import get_courses
 
@@ -9,7 +9,7 @@ CORS(app)
 
 @app.route('/course')
 def course():
-    return jsonify(get_courses())
+    return get_courses()
 
 
 if __name__ == '__main__':
