@@ -14,6 +14,47 @@ cursor = conn.cursor()
 #
 # cursor.execute(create_table_teacher)
 # conn.commit()
+
+# create_table_instructor = '''
+# CREATE TABLE instructor(
+#     id SERIAL PRIMARY KEY,
+#     name VARCHAR(150) NOT NULL,
+#     email VARCHAR(150) NOT NULL,
+#     area VARCHAR(150) NOT NULL
+# )
+# '''
+#
+# cursor.execute(create_table_instructor)
+# conn.commit()
+
+# create_table_courses = '''
+# CREATE TABLE courses(
+#     id SERIAL PRIMARY KEY,
+#     name VARCHAR(150) NOT NULL
+# )
+# '''
+#
+# cursor.execute(create_table_courses)
+# conn.commit()
+
+# create_table_classroom = '''
+# CREATE TABLE classroom(
+#     id SERIAL PRIMARY KEY,
+#     number_classroom INTEGER NOT NULL,
+#     capacity INTEGER NOT NULL,
+#     computer BOOLEAN NOT NULL
+# )
+# '''
+#
+# cursor.execute(create_table_classroom)
+# conn.commit()
+
+
+classroom=[
+
+]
+
+
 teacher =[
     ('José Mendes', 'jose.mendes@example.com', 'Engenharia'),
     ('Mariana Teixeira', 'mariana.teixeira@example.com', 'Direito'),
