@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from models.course import get_courses
 from models.classroom import get_classroom
-from models.intructor import get_instructor
+from models.instructor import get_instructor
 from models.teacher import get_teacher
 
 
