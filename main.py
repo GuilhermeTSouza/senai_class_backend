@@ -4,6 +4,7 @@ from models.course import get_courses
 from models.classroom import get_classroom
 from models.instructor import get_instructor
 from models.teacher import get_teacher
+from models.user import get_users
 
 
 app = Flask(__name__)
@@ -28,6 +29,12 @@ def instructor():
 @app.route('/teacher')
 def teacher():
     return get_teacher()
+
+
+
+@app.route('/users')
+def user():
+    return get_users()
 
 
 if __name__ == '__main__':
