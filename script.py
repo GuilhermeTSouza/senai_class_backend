@@ -14,7 +14,7 @@ cursor = conn.cursor()
 #
 # cursor.execute(create_table_teacher)
 # conn.commit()
-
+#
 # create_table_instructor = '''
 # CREATE TABLE instructor(
 #     id SERIAL PRIMARY KEY,
@@ -26,7 +26,7 @@ cursor = conn.cursor()
 #
 # cursor.execute(create_table_instructor)
 # conn.commit()
-
+#
 # create_table_courses = '''
 # CREATE TABLE courses(
 #     id SERIAL PRIMARY KEY,
@@ -36,7 +36,7 @@ cursor = conn.cursor()
 #
 # cursor.execute(create_table_courses)
 # conn.commit()
-
+#
 # create_table_classroom = '''
 # CREATE TABLE classroom(
 #     id SERIAL PRIMARY KEY,
@@ -48,8 +48,8 @@ cursor = conn.cursor()
 #
 # cursor.execute(create_table_classroom)
 # conn.commit()
-
-
+#
+#
 # create_table_usuario = '''
 # CREATE TABLE users(
 #     id SERIAL PRIMARY KEY,
@@ -64,11 +64,11 @@ cursor = conn.cursor()
 #
 # cursor.execute(create_table_usuario)
 # conn.commit()
-
-
-
-
-
+#
+#
+#
+#
+#
 # classroom=[
 #
 # ]
@@ -86,9 +86,9 @@ cursor = conn.cursor()
 #     ('Wagner Santos', 'wagner.santos@example.com', 'Administração')
 #
 # ]
-
-
-
+#
+#
+#
 # instructor = [
 #     ('Alice Silva', 'alice.silva@example.com', 'Matemática'),
 #     ('Bruno Costa', 'bruno.costa@example.com', 'Física'),
@@ -100,9 +100,9 @@ cursor = conn.cursor()
 #     ('Henrique Pinto', 'henrique.pinto@example.com', 'Inglês'),
 #     ('Isabel Duarte', 'isabel.duarte@example.com', 'Artes')
 # ]
-
-
-
+#
+#
+#
 # course = [
 #     ('Ciência da Computação',),
 #     ('Engenharia Civil',),
@@ -113,35 +113,41 @@ cursor = conn.cursor()
 #     ('Arquitetura e Urbanismo',),
 #     ('Biologia',)
 # ]
-
-users = [
-    ('Admin' , 'Admin@gmail.com' , '1234' , 'dark' , '#28c241')
-]
-
-
+#
+# users = [
+#     ('Admin' , 'Admin@gmail.com' , '1234' , 'dark' , '#28c241')
+# ]
 #
 #
-# insert_teacher = '''
-#     INSERT INTO teacher (name, email, area) VALUES (%s,%s,%s)
-# '''
 #
+#
+# # insert_teacher = '''
+# #     INSERT INTO teacher (name, email, area) VALUES (%s,%s,%s)
+# # '''
+# # cursor.executemany(insert_teacher, teacher)
+# # conn.commit()
+# #
 # insert_instructor = '''
 #     INSERT INTO instructor (name, email, area) VALUES (%s,%s,%s)
 # '''
-#
+# cursor.executemany(insert_instructor, instructor)
+# conn.commit()
+# #
 # insert_course = '''
 #     INSERT INTO courses (name) VALUES (%s)
 # '''
-# cursor.executemany(insert_teacher, teacher)
-# cursor.executemany(insert_instructor, instructor)
 # cursor.executemany(insert_course, course)
 # conn.commit()
-
-insert_users = '''
-    INSERT INTO users (username , email ,password , theme , user_color) VALUES (%s,%s,%s,%s,%s)
-'''
-cursor.executemany(insert_users , users)
-conn.commit()
+#
+#
+#
+#
+#
+# insert_users = '''
+#     INSERT INTO users (username , email ,password , theme , user_color) VALUES (%s,%s,%s,%s,%s)
+# '''
+# cursor.executemany(insert_users , users)
+# conn.commit()
 
 # delete_table = '''
 #  DROP TABLE user;
