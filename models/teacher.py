@@ -34,3 +34,52 @@ def get_teacher() -> List:
         teacher.append(teachers)
 
     return teacher
+
+def save_teacher(data):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    insert_teacher = '''
+         INSERT INTO teacher (name, email, area) VALUES (%s,%s,%s)
+    '''
+    cursor.execute(insert_teacher, (
+        data["name"],
+        data["email"],
+        data["area"]
+    ))
+
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+def delete_teacher(teacher_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    delete_teacher= '''
+             DELETE FROM teacher WHERE id = %s
+        '''
+
+    cursor.execute(delete_teacher, (teacher_id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def edit_teacher(data):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    insert_teacher = '''
+         UPDATE teacher SET name=%s, email=%s ,area=%s WHERE id = %s
+    '''
+    cursor.execute(insert_teacher, (
+        data["name"],
+        data["email"],
+        data["area"],
+        data['id']
+    ))
+
+    conn.commit()
+
+    cursor.close()
+    conn.close()

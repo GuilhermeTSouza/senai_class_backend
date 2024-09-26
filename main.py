@@ -3,7 +3,7 @@ from flask_cors import CORS
 from models.course import get_courses, save_courses, delete_courses, edit_courses
 from models.classroom import get_classroom, save_classroom, delete_classroom, edit_classroom
 from models.instructor import get_instructor , save_instructor, delete_instructor, edit_instructor
-from models.teacher import get_teacher
+from models.teacher import get_teacher, save_teacher, delete_teacher, edit_teacher
 from models.user import get_users
 
 
@@ -63,10 +63,21 @@ def del_instructor(instrutor_id):
 
 
 
-@app.route('/teacher')
+@app.route('/teacher', methods=['GET','POST','PUT'])
 def teacher():
-    return get_teacher()
+    if request.method == 'GET':
+        return get_teacher()
+    elif request.method == 'POST':
+        save_teacher(request.get_json())
+        return {"msg": "ok"}
+    else:
+        edit_teacher(request.get_json())
+        return {"msg": "ok"}
 
+@app.route('/teacher/<int:teacher_id>', methods=['DELETE'])
+def del_teacher(teacher_id):
+    delete_teacher(teacher_id)
+    return {"msg": "ok"}
 
 
 @app.route('/users')
