@@ -60,6 +60,26 @@ cursor = conn.cursor()
 #     user_color VARCHAR(150) NOT NULL
 # )
 # '''
+
+# create_table_disciplina = '''
+# CREATE TABLE discipline(
+#         id SERIAL PRIMARY KEY,
+#         name VARCHAR(145) NOT NULL,
+#         worload INT NOT NULL
+# )
+# '''
+# cursor.execute(create_table_disciplina)
+# conn.commit()
+
+# create_table_curso_disciplina = '''
+# CREATE TABLE course_discipline(
+#         id SERIAL PRIMARY KEY,
+#         course_id INT REFERENCES courses(id) ON DELETE CASCADE,
+#         discipline_id INT REFERENCES discipline(id) ON DELETE CASCADE
+# )
+# '''
+# cursor.execute(create_table_curso_disciplina)
+# conn.commit()
 #
 #
 # cursor.execute(create_table_usuario)

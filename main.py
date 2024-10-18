@@ -56,7 +56,7 @@ def instructor():
         edit_instructor(request.get_json())
         return {"msg": "ok"}
 
-@app.route('/instructoe/<int:instrutor_id>', methods=['DELETE'])
+@app.route('/instructor/<int:instrutor_id>', methods=['DELETE'])
 def del_instructor(instrutor_id):
     delete_instructor(instrutor_id)
     return {"msg": "ok"}
