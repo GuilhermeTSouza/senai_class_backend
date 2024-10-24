@@ -60,7 +60,7 @@ cursor = conn.cursor()
 #     user_color VARCHAR(150) NOT NULL
 # )
 # '''
-
+#
 # create_table_disciplina = '''
 # CREATE TABLE discipline(
 #         id SERIAL PRIMARY KEY,
@@ -70,7 +70,7 @@ cursor = conn.cursor()
 # '''
 # cursor.execute(create_table_disciplina)
 # conn.commit()
-
+#
 # create_table_curso_disciplina = '''
 # CREATE TABLE course_discipline(
 #         id SERIAL PRIMARY KEY,
@@ -84,11 +84,11 @@ cursor = conn.cursor()
 #
 # cursor.execute(create_table_usuario)
 # conn.commit()
-#
-#
-#
-#
-#
+
+
+
+
+
 # classroom=[
 #
 # ]
@@ -137,16 +137,16 @@ cursor = conn.cursor()
 # users = [
 #     ('Admin' , 'Admin@gmail.com' , '1234' , 'dark' , '#28c241')
 # ]
-#
-#
-#
-#
-# # insert_teacher = '''
-# #     INSERT INTO teacher (name, email, area) VALUES (%s,%s,%s)
-# # '''
-# # cursor.executemany(insert_teacher, teacher)
-# # conn.commit()
-# #
+
+
+
+
+# insert_teacher = '''
+#     INSERT INTO teacher (name, email, area) VALUES (%s,%s,%s)
+# '''
+# cursor.executemany(insert_teacher, teacher)
+# conn.commit()
+
 # insert_instructor = '''
 #     INSERT INTO instructor (name, email, area) VALUES (%s,%s,%s)
 # '''
