@@ -5,6 +5,7 @@ from models.classroom import get_classroom, save_classroom, delete_classroom, ed
 from models.instructor import get_instructor , save_instructor, delete_instructor, edit_instructor
 from models.teacher import get_teacher, save_teacher, delete_teacher, edit_teacher
 from models.user import get_users
+from models.discipline import get_discipline, save_discipline, edit_discipline,delete_discipline
 
 
 app = Flask(__name__)
@@ -77,6 +78,22 @@ def teacher():
 @app.route('/teacher/<int:teacher_id>', methods=['DELETE'])
 def del_teacher(teacher_id):
     delete_teacher(teacher_id)
+    return {"msg": "ok"}
+
+@app.route('/discipline', methods=['GET','POST','PUT'])
+def discipline():
+    if request.method == 'GET':
+        return get_discipline()
+    elif request.method == 'POST':
+        save_discipline(request.get_json())
+        return {"msg": "ok"}
+    else:
+        edit_discipline(request.get_json())
+        return {"msg": "ok"}
+
+@app.route('/discipline/<int:discipline_id>', methods=['DELETE'])
+def del_discipline(discipline_id):
+    delete_discipline(discipline_id)
     return {"msg": "ok"}
 
 
