@@ -1,21 +1,21 @@
-from database import get_db_connection
+from scripts.database import get_db_connection
 from typing import List
 
 
 class Teacher:
 
-    def __init__(self, instructor_id, name, email, area):
+    def __init__(self, instructor_id, name, area_id):
         self.instructor_id = instructor_id
         self.name = name
-        self.email = email
-        self.area = area
+        self.area_id = area_id
+
 
 
 def get_teacher() -> List:
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute('SELECT id,name, email, area FROM teacher;')
+    cursor.execute('SELECT id ,name FROM teacher;')
 
     results = cursor.fetchall()
 
@@ -27,8 +27,6 @@ def get_teacher() -> List:
         teachers = {
             'id': result[0],
             'name': result[1],
-            'email': result[2],
-            'area': result[3]
         }
 
         teacher.append(teachers)
@@ -40,12 +38,10 @@ def save_teacher(data):
     cursor = conn.cursor()
 
     insert_teacher = '''
-         INSERT INTO teacher (name, email, area) VALUES (%s,%s,%s)
+         INSERT INTO teacher (name, area_id) VALUES (%s,%s)
     '''
     cursor.execute(insert_teacher, (
         data["name"],
-        data["email"],
-        data["area"]
     ))
 
     conn.commit()
@@ -70,12 +66,10 @@ def edit_teacher(data):
     cursor = conn.cursor()
 
     insert_teacher = '''
-         UPDATE teacher SET name=%s, email=%s ,area=%s WHERE id = %s
+         UPDATE teacher SET name=%s WHERE id = %s
     '''
     cursor.execute(insert_teacher, (
         data["name"],
-        data["email"],
-        data["area"],
         data['id']
     ))
 

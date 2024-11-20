@@ -1,21 +1,21 @@
-from database import get_db_connection
+from scripts.database import get_db_connection
 from typing import List
 
 
 class Instructor:
 
-    def __init__(self, instructor_id, name, email, area):
+    def __init__(self, instructor_id, name, area_id):
         self.instructor_id = instructor_id
         self.name = name
-        self.email = email
-        self.area = area
+        self.area_id = area_id
+
 
 
 def get_instructor() -> List:
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute('SELECT id,name, email, area FROM instructor;')
+    cursor.execute('SELECT id,name, area_id FROM instructor;')
 
     results = cursor.fetchall()
 
@@ -27,8 +27,7 @@ def get_instructor() -> List:
         instructors = {
             'id': result[0],
             'name': result[1],
-            'email': result[2],
-            'area': result[3]
+            'area_id': result[2],
         }
 
         instructor.append(instructors)
@@ -40,12 +39,11 @@ def save_instructor(data):
     cursor = conn.cursor()
 
     insert_instructor = '''
-         INSERT INTO instructor (name, email, area) VALUES (%s,%s,%s)
+         INSERT INTO instructor (name, area_id) VALUES (%s,%s)
     '''
     cursor.execute(insert_instructor, (
         data["name"],
-        data["email"],
-        data["area"]
+        data["area_id"]
     ))
 
     conn.commit()
@@ -70,12 +68,11 @@ def edit_instructor(data):
     cursor = conn.cursor()
 
     insert_instructor = '''
-         UPDATE instructor SET name=%s, email=%s ,area=%s WHERE id = %s
+         UPDATE instructor SET name=%s, area_id=%s WHERE id = %s
     '''
     cursor.execute(insert_instructor, (
         data["name"],
-        data["email"],
-        data["area"],
+        data["area_id"],
         data['id']
     ))
 

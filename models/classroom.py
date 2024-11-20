@@ -1,21 +1,24 @@
-from database import get_db_connection
+from scripts.database import get_db_connection
 from typing import List
 
 
 class Classroom:
 
-    def __init__(self, classroom_id, number_classroom, capacity, computer):
+    def __init__(self, classroom_id, name, area_id, nb_places):
         self.classroom_id = classroom_id
-        self.number_classroom = number_classroom
-        self.capacity = capacity
-        self.computer = computer
+        self.name = name
+        self.area_id = area_id
+        self.nb_places = nb_places
 
 
 def get_classroom() -> List:
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute('SELECT id,number_classroom, capacity, computer FROM classroom ORDER BY number_classroom')
+    cursor.execute('SELECT c.id , c.name, c.area_id, a.name, c.nb_places '
+                   'FROM classroom AS c '
+                   'INNER JOIN area AS a ON c.area_id = a.id '
+                   'ORDER BY c.name')
 
     results = cursor.fetchall()
 
@@ -26,9 +29,10 @@ def get_classroom() -> List:
     for result in results:
         classrooms = {
             'id': result[0],
-            'number_classroom': result[1],
-            'capacity': result[2],
-            'computer': result[3]
+            'name': result[1],
+            'area_id': result[2],
+            'area_name': result[3],
+            'nb_places': result[4]
         }
 
         classroom.append(classrooms)
@@ -41,12 +45,12 @@ def save_classroom(data):
     cursor = conn.cursor()
 
     insert_classroom = '''
-         INSERT INTO classroom (number_classroom, capacity, computer) VALUES (%s,%s,%s)
+         INSERT INTO classroom (name, area_id, nb_places) VALUES (%s,%s,%s)
     '''
     cursor.execute(insert_classroom, (
-        data["number_classroom"],
-        data["capacity"],
-        data["computer"]
+        data["name"],
+        data["area_id"],
+        data["nb_places"]
     ))
 
     conn.commit()
@@ -71,12 +75,12 @@ def edit_classroom(data):
     cursor = conn.cursor()
 
     insert_classroom = '''
-         UPDATE classroom SET number_classroom=%s, capacity=%s ,computer=%s WHERE id = %s
+         UPDATE classroom SET name=%s, area_id=%s ,nb_places=%s WHERE id = %s
     '''
     cursor.execute(insert_classroom, (
-        data["number_classroom"],
-        data["capacity"],
-        data["computer"],
+        data["name"],
+        data["area_id"],
+        data["nb_places"],
         data['id']
     ))
 

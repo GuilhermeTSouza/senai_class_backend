@@ -1,4 +1,4 @@
-from database import get_db_connection
+from scripts.database import get_db_connection
 from typing import List
 
 
