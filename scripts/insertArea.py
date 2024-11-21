@@ -11,7 +11,7 @@ conn.commit()
 
 
 areas = [
-    ('Tecnologia da Informação' ,),
+    ('Tecnologia da Informação',),
     ('Elétrica',),
     ('Modelação',),
     ('Montagem de Veículos',),
