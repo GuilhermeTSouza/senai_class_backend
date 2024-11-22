@@ -15,7 +15,15 @@ def get_instructor() -> List:
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute('SELECT id,name, area_id FROM instructor;')
+# 'SELECT c.id , c.name, c.area_id, a.name, c.nb_places '
+#                    'FROM classroom AS c '
+#                    'INNER JOIN area AS a ON c.area_id = a.id '
+#                    'ORDER BY c.name'
+
+    cursor.execute('SELECT i.id, i.name, i.area_id , a.name '
+                   'FROM instructor AS i '
+                   'INNER JOIN area AS a ON i.area_id = a.id '
+                   'ORDER BY i.name')
 
     results = cursor.fetchall()
 
@@ -28,6 +36,7 @@ def get_instructor() -> List:
             'id': result[0],
             'name': result[1],
             'area_id': result[2],
+            'area_name': result[3],
         }
 
         instructor.append(instructors)

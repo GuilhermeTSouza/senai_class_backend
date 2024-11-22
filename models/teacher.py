@@ -4,10 +4,10 @@ from typing import List
 
 class Teacher:
 
-    def __init__(self, instructor_id, name, area_id):
+    def __init__(self, instructor_id, name):
         self.instructor_id = instructor_id
         self.name = name
-        self.area_id = area_id
+
 
 
 
@@ -38,7 +38,7 @@ def save_teacher(data):
     cursor = conn.cursor()
 
     insert_teacher = '''
-         INSERT INTO teacher (name, area_id) VALUES (%s,%s)
+         INSERT INTO teacher (name) VALUES (%s)
     '''
     cursor.execute(insert_teacher, (
         data["name"],

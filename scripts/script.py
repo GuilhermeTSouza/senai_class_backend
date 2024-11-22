@@ -73,7 +73,7 @@ cursor = conn.cursor()
 
 
 # delete_table = '''
-#  DROP TABLE discipline CASCADE;
+#  DROP TABLE teacher CASCADE;
 # '''
 # cursor.execute(delete_table)
 # conn.commit()
