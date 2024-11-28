@@ -13,14 +13,7 @@ conn.commit()
 areas = [
     ('Tecnologia da Informação',),
     ('Elétrica',),
-    ('Modelação',),
-    ('Montagem de Veículos',),
-    ('Solda',),
-    ('Marcenaria',),
-    ('Mecânica de Veículos',),
-    ('Móveis',),
-    ('Adiministração',),
-    ('Calderaria',)
+    ('Administração',),
 ]
 
 insert_area = '''

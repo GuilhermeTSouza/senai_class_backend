@@ -11,10 +11,10 @@ conn.commit()
 
 
 classroom = [
-    ('Técnico Desenvolvimento de Sistemas 1' , 3, False, False,False,True,True ),
-    ('Técnico Desenvolvimento de Sistemas 2', 3, False, True, True, False, False),
-    ('Técnico Eletroeltrônica 1' , 4, False, False,False,True,True ),
-    ('Técnico Eletroeltrônica 2', 4, False, True, True, False, False),
+    ('Técnico Desenvolvimento de Sistemas 1' , 1, False, False,False,True,True ),
+    ('Técnico Desenvolvimento de Sistemas 2', 1, False, True, True, False, False),
+    ('Técnico Eletroeltrônica 1' , 2, False, False,False,True,True ),
+    ('Técnico Eletroeltrônica 2', 2, False, True, True, False, False),
 ]
 
 insert_courses = '''

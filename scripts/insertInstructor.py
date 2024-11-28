@@ -11,9 +11,9 @@ conn.commit()
 
 
 instructor = [
-    ('Moises' , 3),
-    ('Rodolfo' , 3),
-    ('Alberto' , 3)
+    ('Moises' , 1),
+    ('Rodolfo' , 1),
+    ('Alberto' , 1)
 ]
 
 insert_instructor = '''
