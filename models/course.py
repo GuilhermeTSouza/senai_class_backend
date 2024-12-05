@@ -19,7 +19,7 @@ def get_courses() -> List:
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute('SELECT id,name, area_id ,monday, tuesday, wednesday, thursday, friday FROM course ORDER BY name')
+    cursor.execute('SELECT id,name, area_id FROM course ORDER BY name')
 
     results = cursor.fetchall()
 
@@ -31,12 +31,7 @@ def get_courses() -> List:
         course = {
             'id': result[0],
             'name': result[1],
-            'area_id': result[2],
-            'monday': result[3],
-            'tuesday': result[4],
-            'wednesday': result[5],
-            'thursday': result[6],
-            'friday': result[7],
+            'area_id': result[2]
         }
 
         courses.append(course)
@@ -48,16 +43,11 @@ def save_courses(data):
     cursor = conn.cursor()
 
     insert_courses = '''
-         INSERT INTO course (name, area_id ,monday, tuesday, wednesday, thursday, friday) VALUES (%s,%s,%s,%s,%s,%s,%s)
+         INSERT INTO course (name, area_id ) VALUES (%s,%s)
     '''
     cursor.execute(insert_courses, (
         data["name"],
         data["area_id"],
-        data["monday"],
-        data["tuesday"],
-        data["wednesday"],
-        data["thursday"],
-        data["friday"]
     ))
 
     conn.commit()
@@ -82,16 +72,11 @@ def edit_courses(data):
     cursor = conn.cursor()
 
     insert_courses = '''
-         UPDATE course SET name = %s, area_id = %s ,monday = %s, tuesday = %s, wednesday = %s, thursday = %s, friday = %s WHERE id = %s
+         UPDATE course SET name = %s, area_id = %s WHERE id = %s
     '''
     cursor.execute(insert_courses, (
         data["name"],
         data["area_id"],
-        data["monday"],
-        data["tuesday"],
-        data["wednesday"],
-        data["thursday"],
-        data["friday"],
         data['id']
     ))
 
