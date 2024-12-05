@@ -11,9 +11,9 @@ conn.commit()
 
 
 classroom = [
-    ('Sala 03' , 3, 34 ),
-    ('Laboratório CLP', 4 , 16),
-    ('Laboratório Eletrônica Digital', 4 , 16),
+    ('Sala 03' , 1, 34 ),
+    ('Laboratório CLP', 2 , 16),
+    ('Laboratório Eletrônica Digital', 2 , 16),
 
 ]
 

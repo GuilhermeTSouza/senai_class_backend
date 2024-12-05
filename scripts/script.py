@@ -2,7 +2,7 @@ from database import get_db_connection
 
 conn = get_db_connection()
 cursor = conn.cursor()
-#
+
 # create_table_area = '''
 # CREATE TABLE area (
 #     id SERIAL PRIMARY KEY,
@@ -22,14 +22,14 @@ cursor = conn.cursor()
 # cursor.execute(create_table_instructor)
 # conn.commit()
 #
-# create_table_teacher = '''
-# CREATE TABLE teacher (
-#     id SERIAL PRIMARY KEY,
-#     name VARCHAR(150) NOT NULL
-# )
-# '''
-# cursor.execute(create_table_teacher)
-# conn.commit()
+create_table_teacher = '''
+CREATE TABLE teacher (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL
+)
+'''
+cursor.execute(create_table_teacher)
+conn.commit()
 #
 # create_table_course = '''
 # CREATE TABLE course (
@@ -73,13 +73,12 @@ cursor = conn.cursor()
 
 
 # delete_table = '''
-#  DROP TABLE discipline CASCADE;
+#  DROP TABLE teacher CASCADE;
 # '''
 # cursor.execute(delete_table)
 # conn.commit()
-
-cursor.close()
-conn.close()
+# cursor.close()
+# conn.close()
 
 cursor.close()
 conn.close()
